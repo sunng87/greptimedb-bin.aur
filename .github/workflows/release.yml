@@ -17,7 +17,7 @@ jobs:
       - name: Pushes to AUR
         run: |
           cat <<EOF > $HOME/.ssh/id_rsa
-${{ secrets.AUR_DEPLOY_KEY }}
-EOF
+          ${{ secrets.AUR_DEPLOY_KEY }}
+          EOF
           git remote add aur ssh://aur@aur.archlinux.org/greptimedb-bin.git
           git push aur master
