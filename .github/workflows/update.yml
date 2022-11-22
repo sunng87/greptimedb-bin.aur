@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3.1.0
       - id: fetch-latest-release
-        uses: thebritican/fetch-latest-release@v2
+        uses: gregziegan/fetch-latest-release@v2.0.0
         with:
-          github_token: ${{ github.token }}
+          repo_path: GreptimeTeam/greptimedb
       - id: update-pkgbuild
         run: |
           tag=${{steps.fetch-latest-release.tag_name}} ./update.sh
