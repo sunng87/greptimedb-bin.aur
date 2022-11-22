@@ -20,6 +20,7 @@ jobs:
           cat <<EOF > $HOME/.ssh/id_rsa
           ${{ secrets.AUR_DEPLOY_KEY }}
           EOF
+          chmod 600 $HOME/.ssh/id_rsa
           touch $HOME/.ssh/known_hosts
           ssh-keyscan -t rsa aur.archlinux.org >> $HOME/.ssh/known_hosts
           git remote add aur ssh://aur@aur.archlinux.org/greptimedb-bin.git
