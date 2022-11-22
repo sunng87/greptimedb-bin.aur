@@ -15,16 +15,16 @@ jobs:
           repo_path: GreptimeTeam/greptimedb
       - id: update-pkgbuild
         run: |
-          tag=${{steps.fetch-latest-release.tag_name}} ./update.sh
+          tag=${{steps.fetch-latest-release.outputs.tag_name}} ./update.sh
       - uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ github.token }}
-          commit-message: "Update to ${{steps.fetch-latest-release.tag_name}}"
+          commit-message: "Update to ${{steps.fetch-latest-release.outputs.tag_name}}"
           committer: GitHub Action <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: ${{steps.fetch-latest-release.tag_name}}
+          branch: ${{steps.fetch-latest-release.outputs.tag_name}}
           delete-branch: true
-          title: "Update AUR ${{steps.fetch-latest-release.tag_name}}"
+          title: "Update AUR ${{steps.fetch-latest-release.outputs.tag_name}}"
           body: |
-            Update package to: ${{steps.fetch-latest-release.tag_name}}
+            Update package to: ${{steps.fetch-latest-release.outputs.tag_name}}
