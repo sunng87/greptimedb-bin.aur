@@ -1,0 +1,30 @@
+name: Sync
+
+on:
+  schedule: [{cron: "0 13 * * *"}]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.1.0
+      - id: fetch-latest-release
+        uses: thebritican/fetch-latest-release@v1
+        with:
+          github_token: ${{ github.token }}
+      - id: update-pkgbuild
+        run: |
+          tag=${{steps.fetch-latest-release.tag_name}} ./update.sh
+      - uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ github.token }}
+          commit-message: "Update to ${{steps.fetch-latest-release.tag_name}}"
+          committer: GitHub Action <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: ${{steps.fetch-latest-release.tag_name}}
+          delete-branch: true
+          title: "Update AUR ${{steps.fetch-latest-release.tag_name}}"
+          body: |
+            Update package to: ${{steps.fetch-latest-release.tag_name}}
