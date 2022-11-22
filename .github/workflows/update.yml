@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3.1.0
       - id: fetch-latest-release
-        uses: thebritican/fetch-latest-release@v1
+        uses: thebritican/fetch-latest-release@v2
         with:
           github_token: ${{ github.token }}
       - id: update-pkgbuild
