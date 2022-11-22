@@ -21,6 +21,6 @@ jobs:
           ${{ secrets.AUR_DEPLOY_KEY }}
           EOF
           touch $HOME/.ssh/known_hosts
-          ssh-keygen -R aur.archlinux.org
+          ssh-keyscan -t rsa aur.archlinux.org >> $HOME/.ssh/known_hosts
           git remote add aur ssh://aur@aur.archlinux.org/greptimedb-bin.git
           git push aur master
