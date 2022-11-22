@@ -13,3 +13,5 @@ sed -i -r s/^sha256sums=.+/sha256sums=\(\"$sha256sum\"\)/ PKGBUILD
 sed -i -r s/pkgver.+/pkgver\ =\ $pkgver/ .SRCINFO
 sed -i -r s/download\\/.+\\//download\\/$tag\\// .SRCINFO
 sed -i -r s/sha256sums.+/sha256sums\ =\ $sha256sum/ .SRCINFO
+
+git diff --no-ext-diff --quiet --exit-code

@@ -17,6 +17,7 @@ jobs:
         run: |
           tag=${{steps.fetch-latest-release.outputs.tag_name}} ./update.sh
       - uses: peter-evans/create-pull-request@v4
+        if: ${{ failure() }}
         with:
           token: ${{ github.token }}
           commit-message: "Update to ${{steps.fetch-latest-release.outputs.tag_name}}"
