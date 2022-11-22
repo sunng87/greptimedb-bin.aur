@@ -1,0 +1,21 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - ".SRCINFO"
+      - "PKGBUILD"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Pushes to AUR
+        run: |
+          echo ${{ secrets.AUR_DEPLOY_KEY }} > $HOME/.ssh/id_rsa
+          git remote add aur ssh://aur@aur.archlinux.org/greptimedb-bin.git
+          git push aur master
