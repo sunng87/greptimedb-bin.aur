@@ -24,4 +24,6 @@ jobs:
           touch $HOME/.ssh/known_hosts
           ssh-keyscan -t rsa aur.archlinux.org >> $HOME/.ssh/known_hosts
           git remote add aur ssh://aur@aur.archlinux.org/greptimedb-bin.git
-          git push aur master
+          git checkout aur-master
+          git cherry-pick master
+          git push aur aur-master:master
