@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Pushes to AUR
         run: |
           mkdir -p $HOME/.ssh/
@@ -26,4 +28,5 @@ jobs:
           git remote add aur ssh://aur@aur.archlinux.org/greptimedb-bin.git
           git checkout aur-master
           git cherry-pick master
+          git push origin aur-master
           git push aur aur-master:master
