@@ -25,6 +25,8 @@ jobs:
           chmod 600 $HOME/.ssh/id_rsa
           touch $HOME/.ssh/known_hosts
           ssh-keyscan -t rsa aur.archlinux.org >> $HOME/.ssh/known_hosts
+          git config --global user.email "n@sunng.info"
+          git config --global user.name "Ning Sun"
           git remote add aur ssh://aur@aur.archlinux.org/greptimedb-bin.git
           git checkout aur-master
           git cherry-pick master
