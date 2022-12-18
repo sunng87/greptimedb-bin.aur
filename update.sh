@@ -12,7 +12,7 @@ if [[ -n $(git status --porcelain) ]]; then
 
     sed -i -r s/^pkgrel=.+/pkgrel=1/ PKGBUILD
     sed -i -r s/^_pkgvergh=.+/_pkgvergh=$tag/ PKGBUILD
-    sed -i -r s/^sha256sums=.+/sha256sums=\(\"$sha256sum\"\)/ PKGBUILD
+    sed -i -r s/^sha256sums=.+/sha256sums=\(\"$sha256sum\"/ PKGBUILD
 
     sed -i -r s/pkgver.+/pkgver\ =\ $pkgver/ .SRCINFO
     sed -i -r s/pkgrel.+/pkgrel\ =\ 1/ .SRCINFO
