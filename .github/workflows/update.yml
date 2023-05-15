@@ -10,9 +10,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3.1.0
       - id: fetch-latest-release
-        uses: gregziegan/fetch-latest-release@v2.0.0
+        uses: cardinalby/git-get-release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          repo_path: GreptimeTeam/greptimedb
+          repo: GreptimeTeam/greptimedb
+          prerelease: true
+          releaseNameRegEx: "Release v[\\.\\d]+-nightly-\\d{8}"
+          latest: 1
       - id: update-pkgbuild
         run: |
           tag=${{steps.fetch-latest-release.outputs.tag_name}} ./update.sh
