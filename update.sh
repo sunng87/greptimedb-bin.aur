@@ -9,7 +9,7 @@ sed -i -r s/^pkgver=.+/pkgver=$pkgver/ PKGBUILD
 
 if [[ -n $(git status --porcelain) ]]; then
     ## pkgver changed
-    export sha256sum=$(curl -L https://github.com/GreptimeTeam/greptimedb/releases/download/$tag/greptime-linux-amd64.sha256sum)
+    export sha256sum=$(curl -L https://github.com/GreptimeTeam/greptimedb/releases/download/${tag}/greptime-linux-amd64-${tag}.sha256sum)
 
     sed -i -r s/^pkgrel=.+/pkgrel=1/ PKGBUILD
     sed -i -r s/^_pkgvergh=.+/_pkgvergh=$tag/ PKGBUILD
