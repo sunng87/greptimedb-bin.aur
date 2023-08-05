@@ -18,6 +18,7 @@ if [[ -n $(git status --porcelain) ]]; then
     sed -i -r s/pkgver.+/pkgver\ =\ $pkgver/ .SRCINFO
     sed -i -r s/pkgrel.+/pkgrel\ =\ 1/ .SRCINFO
     sed -i -r s/download\\/.+\\//download\\/$tag\\// .SRCINFO
+    sed -i -r s/greptime-linux-amd64-.+\\.tar\\.gz/greptime-linux-amd64-$tag.tar.gz/ .SRCINFO
     sed -i -r 0,/sha256sums.+/s//sha256sums\ =\ $sha256sum/ .SRCINFO
 
     echo "dirty=yes" >>$GITHUB_OUTPUT
