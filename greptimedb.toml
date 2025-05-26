@@ -1,5 +1,3 @@
-node_id = 0
-mode = 'standalone'
 enable_memory_catalog = false
 
 [wal]
@@ -13,30 +11,30 @@ sync_write = false
 type = 'File'
 data_home = '/var/lib/greptimedb/'
 
-[http_options]
+[http]
+enable = true
 addr = '0.0.0.0:4000'
-timeout = "30s"
 
-[grpc_options]
-addr = '0.0.0.0:4001'
-runtime_size = 8
+[grpc]
+enable = true
+bind_addr = '0.0.0.0:4001'
 
-[mysql_options]
+[mysql]
+enable = true
 addr = '0.0.0.0:4002'
-runtime_size = 2
 
-[influxdb_options]
+[influxdb]
 enable = true
 
-[opentsdb_options]
-addr = "0.0.0.0:4242"
-enable = true
-runtime_size = 2
-
-[prometheus_options]
+[prom_store]
 enable = true
 
-[postgres_options]
+[postgres]
+enable = true
 addr = '0.0.0.0:4003'
-runtime_size = 2
-check_pwd = false
+
+[jaeger]
+enable = true
+
+[logging]
+dir = "/var/log/greptimedb/"
