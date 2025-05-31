@@ -1,13 +1,14 @@
 pkgbase = greptimedb-bin
     pkgdesc = Open-source time-series database.
     pkgver = 0.15.0.20250526
-    pkgrel = 2
+    pkgrel = 3
     url = https://github.com/GreptimeTeam/greptimedb
     arch = x86_64
     license = Apache-2.0
     depends = zlib
     depends = glibc
     provides = greptimedb
+    backup = etc/greptimedb/greptimedb.toml
     source = https://github.com/GreptimeTeam/greptimedb/releases/download/v0.15.0-nightly-20250526/greptime-linux-amd64-v0.15.0-nightly-20250526.tar.gz
     source = greptimedb.sysusers
     source = greptimedb.service
