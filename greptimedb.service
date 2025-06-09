@@ -7,7 +7,6 @@ After=network.target
 Type=simple
 User=greptime
 ExecStart=/usr/bin/greptime standalone start -c /etc/greptimedb/greptimedb.toml
-ExecStop=/usr/bin/greptime standalone stop
 
 [Install]
 WantedBy=multi-user.target
