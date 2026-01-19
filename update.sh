@@ -1,9 +1,7 @@
 set -e
 
 ##export tag=${{steps.fetch-latest-release.tag_name}}
-export ver=$(echo $tag | cut -d - -f 1)
-export tagdate=$(echo $tag | cut -d - -f 3)
-export pkgver=${ver#v}.$tagdate
+export pkgver=${tag#v}
 
 sed -i -r s/^pkgver=.+/pkgver=$pkgver/ PKGBUILD
 

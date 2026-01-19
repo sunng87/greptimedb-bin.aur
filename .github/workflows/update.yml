@@ -15,8 +15,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           repo: GreptimeTeam/greptimedb
-          prerelease: true
-          releaseNameRegEx: "Release v[\\.\\d]+-nightly-\\d{8}"
+          prerelease: false
           latest: 1
       - id: update-pkgbuild
         run: |
