@@ -1,7 +1,7 @@
 # Maintainer: Ning Sun <n at sunng dot info>
 
 pkgname=greptimedb-bin
-pkgver=1.0.0_beta.4
+pkgver=v1.0.0-beta.4
 _pkgvergh=v1.0.0-beta.4
 pkgrel=1
 pkgdesc='Open-source time-series database.'
